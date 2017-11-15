@@ -1,5 +1,7 @@
 package com.tp.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "produits")
-public class Produit {
+public class Produit implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +25,7 @@ public class Produit {
     private double prix;
 
     @Min(0) 
-    private int stock;
+    private int qteEnStock;
 
     
     public Produit(){};
@@ -31,7 +33,7 @@ public class Produit {
 	@Override
 	public String toString() {
 		return "Produit [produitId=" + produitId + ", nom=" + nom + ", description=" + description + ", image=" + image
-				+ ", prix=" + prix + ", stock=" + stock + "]";
+				+ ", prix=" + prix + ", stock=" + qteEnStock + "]";
 	}
 
 	public Produit(String nom, String description, String image, double prix, int stock) {
@@ -40,7 +42,7 @@ public class Produit {
 		this.description = description;
 		this.image = image;
 		this.prix = prix;
-		this.stock = stock;
+		this.qteEnStock = stock;
 	}
 
 	public String getNom() {
@@ -76,11 +78,11 @@ public class Produit {
 	}
 
 	public int getStock() {
-		return stock;
+		return qteEnStock;
 	}
 
 	public void setStock(int stock) {
-		this.stock = stock;
+		this.qteEnStock = stock;
 	}
 
    
